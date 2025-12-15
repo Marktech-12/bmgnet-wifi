@@ -1,1 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BmgNet WiFi Plans</title>
 
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f2f6f9;
+  margin:0;
+  padding:20px;
+  text-align:center;
+}
+
+.logo{
+  width:140px;
+  margin:20px auto;
+}
+
+h1{
+  color:#0b5ed7;
+  margin-bottom:10px;
+}
+
+.notice{
+  background:#e7f1fb;
+  padding:12px;
+  border-radius:10px;
+  margin-bottom:30px;
+  font-size:14px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.card{
+  background:linear-gradient(135deg,#e9fff2,#d2ffe4);
+  border-radius:16px;
+  padding:20px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.badge{
+  background:#0f9d58;
+  color:#fff;
+  padding:6px 12px;
+  border-radius:20px;
+  font-size:12px;
+  display:inline-block;
+  margin-bottom:10px;
+}
+
+.price{
+  font-size:28px;
+  font-weight:bold;
+  color:#0f9d58;
+}
+
+.desc{
+  margin:10px 0 20px;
+  color:#333;
+}
+
+.btn{
+  background:#22c55e;
+  color:#fff;
+  border:none;
+  padding:12px 20px;
+  border-radius:10px;
+  cursor:pointer;
+  font-size:14px;
+  width:100%;
+}
+
+.btn:hover{
+  background:#16a34a;
+}
+</style>
+</head>
+
+<body>
+
+<img src="logo.png" class="logo" alt="BmgNet WiFi Logo">
+<h1>BmgNet WiFi Packages</h1>
+
+<div class="notice">
+  📌 Pay via <strong>Mpesa Till: 6974693</strong><br>
+  📲 After payment, WhatsApp opens automatically
+</div>
+
+<div class="grid">
+
+  <!-- CARD TEMPLATE -->
+  <script>
+    function buy(plan, price){
+      const phone = "254700692492"; 
+      const msg = `Hello BmgNet WiFi, I want to buy the ${price} (${plan}) package. I have paid via Mpesa.`;
+      window.location.href =
+        `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    }
+  </script>
+
+  <div class="card">
+    <div class="badge">TEST 30 MINS</div>
+    <div class="price">Ksh 5</div>
+    <div class="desc">30 Minutes Unlimited</div>
+    <button class="btn" onclick="buy('30 Minutes Unlimited','Ksh 5')">
+      Click Here To Connect
+    </button>
+  </div>
+
+  <div class="card">
+    <div class="badge">UNLIMITED 2HRS</div>
+    <div class="price">Ksh 10</div>
+    <div class="desc">2 Hours Unlimited</div>
+    <button class="btn" onclick="buy('2 Hours Unlimited','Ksh 10')">
+      Click Here To Connect
+    </button>
+  </div>
+
+  <div class="card">
+    <div class="badge">UNLIMITED 6HRS</div>
+    <div class="price">Ksh 20</div>
+    <div class="desc">6 Hours Unlimited</div>
+    <button class="btn" onclick="buy('6 Hours Unlimited','Ksh 20')">
+      Click Here To Connect
+    </button>
+  </div>
+
+  <div class="card">
+    <div class="badge">UNLIMITED 24HRS</div>
+    <div class="price">Ksh 40</div>
+    <div class="desc">24 Hours Unlimited</div>
+    <button class="btn" onclick="buy('24 Hours Unlimited','Ksh 40')">
+      Click Here To Connect
+    </button>
+  </div>
+
+  <div class="card">
+    <div class="badge">UNLIMITED 1 MONTH</div>
+    <div class="price">Ksh 500</div>
+    <div class="desc">1 Month Unlimited</div>
+    <button class="btn" onclick="buy('1 Month Unlimited','Ksh 500')">
+      Click Here To Connect
+    </button>
+  </div>
+
+</div>
+
+</body>
+  </html>
