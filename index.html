@@ -18,6 +18,13 @@ body{
 }
 h1{
   color:#0b5ed7;
+  margin-bottom:10px;
+}
+.contact{
+  background:#d9edf7;
+  color:#31708f;
+  padding:10px;
+  border-radius:8px;
   margin-bottom:20px;
 }
 .grid{
@@ -68,6 +75,14 @@ h1{
 .btn:hover{
   background:#16a34a;
 }
+.trust{
+  background:#fff3cd;
+  color:#856404;
+  padding:10px;
+  border-radius:8px;
+  margin-bottom:20px;
+  font-size:14px;
+}
 </style>
 </head>
 <body>
@@ -75,13 +90,22 @@ h1{
 <img src="logo.png" class="logo" alt="BmgNet WiFi Logo">
 <h1>BmgNet WiFi Packages</h1>
 
-<p><strong>Pay via Mpesa STK Push</strong></p>
-
-<div class="grid" id="plansGrid">
+<div class="contact">
+  <strong>Contact us:</strong> +254 700 692 492 | support@bmgnet.co.ke
 </div>
 
+<div class="trust">
+  ✅ Trusted WiFi service in your area <br>
+  ✅ Secure M-Pesa payments <br>
+  ✅ 24/7 customer support
+</div>
+
+<p><strong>Tap "Click to Connect" and enter your phone to pay via M-Pesa.</strong></p>
+
+<div class="grid" id="plansGrid"></div>
+
 <script>
-// Define all WiFi plans
+// WiFi plans
 const plans = [
   { name: "30 Minutes Unlimited", price: 5, badge: "TEST 30 MINS" },
   { name: "2 Hours Unlimited", price: 10, badge: "UNLIMITED 2HRS" },
@@ -97,7 +121,7 @@ const plans = [
   { name: "3 Devices Monthly", price: 1000, badge: "3 DEVICES MONTHLY" }
 ];
 
-// Generate cards dynamically
+// Generate cards
 const grid = document.getElementById("plansGrid");
 plans.forEach(plan => {
   const card = document.createElement("div");
@@ -106,34 +130,36 @@ plans.forEach(plan => {
     <div class="badge">${plan.badge}</div>
     <div class="price">Ksh ${plan.price}</div>
     <div class="desc">${plan.name}</div>
-    <button class="btn" onclick="stkPush('${plan.name}', ${plan.price})">
-      Pay & Connect
+    <button class="btn" onclick="payViaSTK('${plan.name}', ${plan.price})">
+      Click to Connect
     </button>
   `;
   grid.appendChild(card);
 });
 
-// STK Push function
-async function stkPush(plan, amount) {
+// Function to trigger STK Push
+function payViaSTK(plan, amount){
   const phone = prompt("Enter your phone number (2547XXXXXXXX):");
-  if (!phone) return alert("Phone number is required");
+  if(!phone) return alert("Phone number is required");
 
-  try {
-    const response = await fetch('/stkpush', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ plan, amount, phone })
-    });
-
-    const data = await response.json();
-    if (data.ResponseCode === "0" || data.success) {
-      alert("Payment request sent! Check your phone to complete payment.");
+  // Send phone and plan info to backend
+  fetch('/stkpush', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ phone, plan, amount })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if(data.success || data.ResponseCode === "0"){
+      alert("Payment request sent! Check your phone to enter M-Pesa PIN.");
     } else {
-      alert("Payment failed: " + (data.ResponseDescription || data.message));
+      alert("Error: " + (data.message || data.ResponseDescription));
     }
-  } catch (err) {
-    alert("Error sending payment request: " + err.message);
-  }
+  })
+  .catch(err => {
+    alert("Could not process payment. Please try again later.");
+    console.error(err);
+  });
 }
 </script>
 
