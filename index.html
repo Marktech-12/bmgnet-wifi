@@ -21,15 +21,7 @@ body{
 
 h1{
   color:#0b5ed7;
-  margin-bottom:10px;
-}
-
-.notice{
-  background:#e7f1fb;
-  padding:12px;
-  border-radius:10px;
   margin-bottom:30px;
-  font-size:14px;
 }
 
 .grid{
@@ -76,7 +68,6 @@ h1{
   border-radius:10px;
   cursor:pointer;
   font-size:14px;
-  width:100%;
 }
 
 .btn:hover{
@@ -90,69 +81,93 @@ h1{
 <img src="logo.png" class="logo" alt="BmgNet WiFi Logo">
 <h1>BmgNet WiFi Packages</h1>
 
-<div class="notice">
-  📌 Pay via <strong>Mpesa Till: 6974693</strong><br>
-  📲 After payment, WhatsApp opens automatically
-</div>
-
 <div class="grid">
-
-  <!-- CARD TEMPLATE -->
-  <script>
-    function buy(plan, price){
-      const phone = "254700692492"; 
-      const msg = `Hello BmgNet WiFi, I want to buy the ${price} (${plan}) package. I have paid via Mpesa.`;
-      window.location.href =
-        `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-    }
-  </script>
 
   <div class="card">
     <div class="badge">TEST 30 MINS</div>
     <div class="price">Ksh 5</div>
     <div class="desc">30 Minutes Unlimited</div>
-    <button class="btn" onclick="buy('30 Minutes Unlimited','Ksh 5')">
-      Click Here To Connect
-    </button>
+    <button class="btn">Click Here To Connect</button>
   </div>
 
   <div class="card">
     <div class="badge">UNLIMITED 2HRS</div>
     <div class="price">Ksh 10</div>
     <div class="desc">2 Hours Unlimited</div>
-    <button class="btn" onclick="buy('2 Hours Unlimited','Ksh 10')">
-      Click Here To Connect
-    </button>
+    <button class="btn">Click Here To Connect</button>
+  </div>
+
+  <div class="card">
+    <div class="badge">UNLIMITED 3HRS</div>
+    <div class="price">Ksh 15</div>
+    <div class="desc">3 Hours Unlimited</div>
+    <button class="btn">Click Here To Connect</button>
   </div>
 
   <div class="card">
     <div class="badge">UNLIMITED 6HRS</div>
     <div class="price">Ksh 20</div>
     <div class="desc">6 Hours Unlimited</div>
-    <button class="btn" onclick="buy('6 Hours Unlimited','Ksh 20')">
-      Click Here To Connect
-    </button>
+    <button class="btn">Click Here To Connect</button>
+  </div>
+
+  <div class="card">
+    <div class="badge">UNLIMITED 10HRS</div>
+    <div class="price">Ksh 25</div>
+    <div class="desc">10 Hours Unlimited</div>
+    <button class="btn">Click Here To Connect</button>
+  </div>
+
+  <div class="card">
+    <div class="badge">UNLIMITED 12HRS</div>
+    <div class="price">Ksh 30</div>
+    <div class="desc">12 Hours Unlimited</div>
+    <button class="btn">Click Here To Connect</button>
   </div>
 
   <div class="card">
     <div class="badge">UNLIMITED 24HRS</div>
     <div class="price">Ksh 40</div>
     <div class="desc">24 Hours Unlimited</div>
-    <button class="btn" onclick="buy('24 Hours Unlimited','Ksh 40')">
-      Click Here To Connect
-    </button>
+    <button class="btn">Click Here To Connect</button>
+  </div>
+
+  <div class="card">
+    <div class="badge">UNLIMITED 5 DAYS</div>
+    <div class="price">Ksh 100</div>
+    <div class="desc">5 Days Unlimited</div>
+    <button class="btn">Click Here To Connect</button>
+  </div>
+
+  <div class="card">
+    <div class="badge">UNLIMITED 1 WEEK</div>
+    <div class="price">Ksh 120</div>
+    <div class="desc">7 Days Unlimited</div>
+    <button class="btn">Click Here To Connect</button>
   </div>
 
   <div class="card">
     <div class="badge">UNLIMITED 1 MONTH</div>
     <div class="price">Ksh 500</div>
     <div class="desc">1 Month Unlimited</div>
-    <button class="btn" onclick="buy('1 Month Unlimited','Ksh 500')">
-      Click Here To Connect
-    </button>
+    <button class="btn">Click Here To Connect</button>
+  </div>
+
+  <div class="card">
+    <div class="badge">2 DEVICES MONTHLY</div>
+    <div class="price">Ksh 750</div>
+    <div class="desc">1 Month Unlimited</div>
+    <button class="btn">Click Here To Connect</button>
+  </div>
+
+  <div class="card">
+    <div class="badge">3 DEVICES MONTHLY</div>
+    <div class="price">Ksh 1000</div>
+    <div class="desc">1 Month Unlimited</div>
+    <button class="btn">Click Here To Connect</button>
   </div>
 
 </div>
 
 </body>
-  </html>
+</html>
