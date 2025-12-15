@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BmgNet WiFi Plans</title>
-
 <style>
 body{
   font-family: Arial, sans-serif;
@@ -13,17 +12,14 @@ body{
   padding:20px;
   text-align:center;
 }
-
 .logo{
   width:140px;
   margin:20px auto;
 }
-
 h1{
   color:#0b5ed7;
-  margin-bottom:30px;
+  margin-bottom:20px;
 }
-
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -31,14 +27,17 @@ h1{
   max-width:1100px;
   margin:auto;
 }
-
 .card{
   background:linear-gradient(135deg,#e9fff2,#d2ffe4);
   border-radius:16px;
   padding:20px;
   box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  transition:0.3s ease;
 }
-
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
 .badge{
   background:#0f9d58;
   color:#fff;
@@ -48,18 +47,15 @@ h1{
   display:inline-block;
   margin-bottom:10px;
 }
-
 .price{
   font-size:28px;
   font-weight:bold;
   color:#0f9d58;
 }
-
 .desc{
   margin:10px 0 20px;
   color:#333;
 }
-
 .btn{
   background:#22c55e;
   color:#fff;
@@ -69,105 +65,77 @@ h1{
   cursor:pointer;
   font-size:14px;
 }
-
 .btn:hover{
   background:#16a34a;
 }
 </style>
 </head>
-
 <body>
 
 <img src="logo.png" class="logo" alt="BmgNet WiFi Logo">
 <h1>BmgNet WiFi Packages</h1>
 
-<div class="grid">
+<p><strong>Pay via Mpesa STK Push</strong></p>
 
-  <div class="card">
-    <div class="badge">TEST 30 MINS</div>
-    <div class="price">Ksh 5</div>
-    <div class="desc">30 Minutes Unlimited</div>
-    <button class="btn">Click Here To Connect</button>
-  </div>
-
-  <div class="card">
-    <div class="badge">UNLIMITED 2HRS</div>
-    <div class="price">Ksh 10</div>
-    <div class="desc">2 Hours Unlimited</div>
-    <button class="btn">Click Here To Connect</button>
-  </div>
-
-  <div class="card">
-    <div class="badge">UNLIMITED 3HRS</div>
-    <div class="price">Ksh 15</div>
-    <div class="desc">3 Hours Unlimited</div>
-    <button class="btn">Click Here To Connect</button>
-  </div>
-
-  <div class="card">
-    <div class="badge">UNLIMITED 6HRS</div>
-    <div class="price">Ksh 20</div>
-    <div class="desc">6 Hours Unlimited</div>
-    <button class="btn">Click Here To Connect</button>
-  </div>
-
-  <div class="card">
-    <div class="badge">UNLIMITED 10HRS</div>
-    <div class="price">Ksh 25</div>
-    <div class="desc">10 Hours Unlimited</div>
-    <button class="btn">Click Here To Connect</button>
-  </div>
-
-  <div class="card">
-    <div class="badge">UNLIMITED 12HRS</div>
-    <div class="price">Ksh 30</div>
-    <div class="desc">12 Hours Unlimited</div>
-    <button class="btn">Click Here To Connect</button>
-  </div>
-
-  <div class="card">
-    <div class="badge">UNLIMITED 24HRS</div>
-    <div class="price">Ksh 40</div>
-    <div class="desc">24 Hours Unlimited</div>
-    <button class="btn">Click Here To Connect</button>
-  </div>
-
-  <div class="card">
-    <div class="badge">UNLIMITED 5 DAYS</div>
-    <div class="price">Ksh 100</div>
-    <div class="desc">5 Days Unlimited</div>
-    <button class="btn">Click Here To Connect</button>
-  </div>
-
-  <div class="card">
-    <div class="badge">UNLIMITED 1 WEEK</div>
-    <div class="price">Ksh 120</div>
-    <div class="desc">7 Days Unlimited</div>
-    <button class="btn">Click Here To Connect</button>
-  </div>
-
-  <div class="card">
-    <div class="badge">UNLIMITED 1 MONTH</div>
-    <div class="price">Ksh 500</div>
-    <div class="desc">1 Month Unlimited</div>
-    <button class="btn">Click Here To Connect</button>
-  </div>
-
-  <div class="card">
-    <div class="badge">2 DEVICES MONTHLY</div>
-    <div class="price">Ksh 750</div>
-    <div class="desc">1 Month Unlimited</div>
-    <button class="btn">Click Here To Connect</button>
-  </div>
-
-  <div class="card">
-    <div class="badge">3 DEVICES MONTHLY</div>
-    <div class="price">Ksh 1000</div>
-    <div class="desc">1 Month Unlimited</div>
-    <button class="btn">Click Here To Connect</button>
-  </div>
-
+<div class="grid" id="plansGrid">
 </div>
+
+<script>
+// Define all WiFi plans
+const plans = [
+  { name: "30 Minutes Unlimited", price: 5, badge: "TEST 30 MINS" },
+  { name: "2 Hours Unlimited", price: 10, badge: "UNLIMITED 2HRS" },
+  { name: "3 Hours Unlimited", price: 15, badge: "UNLIMITED 3HRS" },
+  { name: "6 Hours Unlimited", price: 20, badge: "UNLIMITED 6HRS" },
+  { name: "10 Hours Unlimited", price: 25, badge: "UNLIMITED 10HRS" },
+  { name: "12 Hours Unlimited", price: 30, badge: "UNLIMITED 12HRS" },
+  { name: "24 Hours Unlimited", price: 40, badge: "UNLIMITED 24HRS" },
+  { name: "5 Days Unlimited", price: 100, badge: "UNLIMITED 5 DAYS" },
+  { name: "7 Days Unlimited", price: 120, badge: "UNLIMITED 1 WEEK" },
+  { name: "1 Month Unlimited", price: 500, badge: "UNLIMITED 1 MONTH" },
+  { name: "2 Devices Monthly", price: 750, badge: "2 DEVICES MONTHLY" },
+  { name: "3 Devices Monthly", price: 1000, badge: "3 DEVICES MONTHLY" }
+];
+
+// Generate cards dynamically
+const grid = document.getElementById("plansGrid");
+plans.forEach(plan => {
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <div class="badge">${plan.badge}</div>
+    <div class="price">Ksh ${plan.price}</div>
+    <div class="desc">${plan.name}</div>
+    <button class="btn" onclick="stkPush('${plan.name}', ${plan.price})">
+      Pay & Connect
+    </button>
+  `;
+  grid.appendChild(card);
+});
+
+// STK Push function
+async function stkPush(plan, amount) {
+  const phone = prompt("Enter your phone number (2547XXXXXXXX):");
+  if (!phone) return alert("Phone number is required");
+
+  try {
+    const response = await fetch('/stkpush', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ plan, amount, phone })
+    });
+
+    const data = await response.json();
+    if (data.ResponseCode === "0" || data.success) {
+      alert("Payment request sent! Check your phone to complete payment.");
+    } else {
+      alert("Payment failed: " + (data.ResponseDescription || data.message));
+    }
+  } catch (err) {
+    alert("Error sending payment request: " + err.message);
+  }
+}
+</script>
 
 </body>
 </html>
